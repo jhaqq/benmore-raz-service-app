@@ -308,7 +308,7 @@ const mockServices: Service[] = [
 
 const serviceIcons: Record<string, JSX.Element> = {
   cleaning: (
-    <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-8 h-8" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
             d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -316,7 +316,7 @@ const serviceIcons: Record<string, JSX.Element> = {
     </svg>
   ),
   repair: (
-    <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-8 h-8" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -324,13 +324,13 @@ const serviceIcons: Record<string, JSX.Element> = {
     </svg>
   ),
   installation: (
-    <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-8 h-8" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M13 10V3L4 14h7v7l9-11h-7z"/>
     </svg>
   ),
   maintenance: (
-    <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-8 h-8" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-.42-.243l-.228-2.284a1 1 0 00-.993-.876H9.394a1 1 0 00-.993.876l-.228 2.284a6 6 0 00-.42.243l-2.388.477a2 2 0 00-1.022.547l-.784.78a1 1 0 00-.187 1.181l1.263 2.127a1 1 0 001.075.495l2.372-.237a6 6 0 00.421.243l.228 2.284a1 1 0 00.993.876h1.566a1 1 0 00.993-.876l.228-2.284a6 6 0 00.421-.243l2.372.237a1 1 0 001.075-.495l1.263-2.127a1 1 0 00-.187-1.181l-.784-.78z"/>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -338,7 +338,7 @@ const serviceIcons: Record<string, JSX.Element> = {
     </svg>
   ),
   moving: (
-    <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-8 h-8" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M9 21v-4a2 2 0 012-2h2a2 2 0 012 2v4"/>
     </svg>
@@ -496,7 +496,7 @@ export default function Services() {
                 placeholder="Search services..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900 bg-white"
               />
             </div>
 
@@ -526,7 +526,11 @@ export default function Services() {
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-0 text-gray-900 bg-white"
+                    className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 min-w-0 text-gray-900 bg-white"
+                    style={{ 
+                      focusRingColor: 'var(--primary)',
+                      borderColor: selectedCategory !== 'all' ? 'var(--primary)' : undefined
+                    }}
                   >
                     {categories.map(category => (
                       <option key={category} value={category} className="text-gray-900">
@@ -542,7 +546,8 @@ export default function Services() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as 'name' | 'price' | 'duration')}
-                    className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-0 text-gray-900 bg-white"
+                    className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 min-w-0 text-gray-900 bg-white"
+                    style={{ focusRingColor: 'var(--primary)' }}
                   >
                     <option value="name" className="text-gray-900">Name</option>
                     <option value="price" className="text-gray-900">Price (Low to High)</option>
@@ -556,7 +561,11 @@ export default function Services() {
                   <select
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
-                    className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-0 text-gray-900 bg-white"
+                    className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 min-w-0 text-gray-900 bg-white"
+                    style={{ 
+                      focusRingColor: 'var(--primary)',
+                      borderColor: priceRange[1] !== 1000 ? 'var(--primary)' : undefined
+                    }}
                   >
                     <option value={100} className="text-gray-900">Under $100</option>
                     <option value={200} className="text-gray-900">Under $200</option>
@@ -575,7 +584,11 @@ export default function Services() {
                     <select
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 text-gray-900 bg-white"
+                      style={{ 
+                        focusRingColor: 'var(--primary)',
+                        borderColor: selectedCategory !== 'all' ? 'var(--primary)' : undefined
+                      }}
                     >
                       {categories.map(category => (
                         <option key={category} value={category} className="text-gray-900">
@@ -591,7 +604,8 @@ export default function Services() {
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value as 'name' | 'price' | 'duration')}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 text-gray-900 bg-white"
+                      style={{ focusRingColor: 'var(--primary)' }}
                     >
                       <option value="name" className="text-gray-900">Name</option>
                       <option value="price" className="text-gray-900">Price (Low to High)</option>
@@ -605,7 +619,11 @@ export default function Services() {
                     <select
                       value={priceRange[1]}
                       onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 text-gray-900 bg-white"
+                      style={{ 
+                        focusRingColor: 'var(--primary)',
+                        borderColor: priceRange[1] !== 1000 ? 'var(--primary)' : undefined
+                      }}
                     >
                       <option value={100} className="text-gray-900">Under $100</option>
                       <option value={200} className="text-gray-900">Under $200</option>
@@ -624,7 +642,8 @@ export default function Services() {
                     setSelectedCategory('all');
                     setPriceRange([0, 1000]);
                   }}
-                  className="flex items-center gap-1 px-3 py-2 text-sm text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-md transition-colors"
+                  className="flex items-center gap-1 px-3 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-md transition-colors"
+                  style={{ color: 'var(--primary)' }}
                 >
                   <XMarkIcon className="h-4 w-4" />
                   Clear Filters
@@ -690,7 +709,7 @@ export default function Services() {
                 >
                   <div className="relative flex-shrink-0">
                     <ShoppingCartIcon className="h-6 w-6 text-gray-700" />
-                    <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    <span className="absolute -top-2 -right-2 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" style={{ backgroundColor: 'var(--primary)' }}>
                       {getCartItemCount()}
                     </span>
                   </div>
@@ -840,7 +859,7 @@ function ServiceCard({
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
       {/* Header */}
-      <div className="p-4 border-b border-gray-100">
+      <div className="p-4 border-b border-gray-100 hover:border-opacity-50 transition-colors" style={{ borderBottomColor: isInCart ? 'var(--primary)' : undefined }}>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {getCategoryIcon(service.category)}
@@ -856,7 +875,8 @@ function ServiceCard({
           </div>
           <Link
             href={`/services/${service.id}`}
-            className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+            className="text-sm font-medium hover:underline"
+            style={{ color: 'var(--primary)' }}
           >
             Details
           </Link>
@@ -868,7 +888,8 @@ function ServiceCard({
           {service.features.map((feature, index) => (
             <span 
               key={index}
-              className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-50 text-blue-700"
+              className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-50"
+              style={{ color: 'var(--primary)' }}
             >
               {feature}
             </span>
@@ -889,7 +910,8 @@ function ServiceCard({
                     name={`room-${service.id}`}
                     value={item.id}
                     onChange={() => handleRoomSelection(item.id)}
-                    className="h-4 w-4 text-blue-600"
+                    className="h-4 w-4"
+                    style={{ color: 'var(--primary)' }}
                   />
                   <span className="text-sm text-gray-900">{item.name}</span>
                 </div>

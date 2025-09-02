@@ -141,8 +141,8 @@ export default function Contact() {
               We've received your message and will get back to you within 4 hours during business hours.
             </p>
             
-            <div className="bg-blue-50 rounded-lg p-4 mb-6">
-              <p className="text-sm text-blue-700">
+            <div className="rounded-lg p-4 mb-6" style={{ backgroundColor: 'rgba(10, 31, 68, 0.05)' }}>
+              <p className="text-sm" style={{ color: 'var(--primary)' }}>
                 <strong>Need immediate assistance?</strong><br />
                 Call us at (555) 123-4567 for urgent matters
               </p>
@@ -163,7 +163,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Contact Us
@@ -190,8 +190,8 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {contactMethods.map((method, index) => (
               <div key={index} className="bg-gray-50 rounded-lg p-6 text-center hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <method.icon className="h-6 w-6" />
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'rgba(10, 31, 68, 0.1)' }}>
+                  <method.icon className="h-6 w-6" style={{ color: 'var(--primary)' }} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {method.title}
@@ -201,7 +201,8 @@ export default function Contact() {
                 </p>
                 <a
                   href={method.action}
-                  className="text-blue-600 hover:text-blue-700 font-medium text-lg block mb-2"
+                  className="font-medium text-lg block mb-2 hover:underline transition-colors"
+                  style={{ color: 'var(--primary)' }}
                 >
                   {method.contact}
                 </a>
@@ -237,7 +238,8 @@ export default function Contact() {
                   <input
                     {...register('name')}
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-white"
+                    style={{ '--tw-ring-color': 'var(--primary)' }}
                     placeholder="Enter your full name"
                   />
                   {errors.name && (
@@ -252,7 +254,8 @@ export default function Contact() {
                   <input
                     {...register('email')}
                     type="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-white"
+                    style={{ '--tw-ring-color': 'var(--primary)' }}
                     placeholder="your.email@example.com"
                   />
                   {errors.email && (
@@ -268,7 +271,8 @@ export default function Contact() {
                 <input
                   {...register('phone')}
                   type="tel"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-white"
+                  style={{ '--tw-ring-color': 'var(--primary)' }}
                   placeholder="(555) 123-4567"
                 />
                 {errors.phone && (
@@ -290,7 +294,7 @@ export default function Contact() {
                         value={option.value}
                         className="sr-only peer"
                       />
-                      <div className="cursor-pointer rounded-lg border border-gray-300 p-4 hover:bg-gray-50 peer-checked:bg-blue-50 peer-checked:border-blue-500 transition-colors">
+                      <div className="cursor-pointer rounded-lg border border-gray-300 p-4 hover:bg-gray-50 peer-checked:border-2 transition-all peer-checked:border-primary" style={{ '--primary': 'var(--primary)' }}>
                         <div className="font-medium text-gray-900">{option.label}</div>
                         <div className="text-sm text-gray-600 mt-1">{option.description}</div>
                       </div>
@@ -340,7 +344,8 @@ export default function Contact() {
                 <textarea
                   {...register('message')}
                   rows={6}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-900 bg-white"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 resize-none text-gray-900 bg-white"
+                  style={{ '--tw-ring-color': 'var(--primary)' }}
                   placeholder="Please provide details about your inquiry, question, or feedback. The more specific you can be, the better we can help you."
                 />
                 <div className="mt-1 flex justify-between text-sm">
@@ -402,7 +407,7 @@ export default function Contact() {
             {officeLocations.map((location, index) => (
               <div key={index} className="bg-gray-50 rounded-lg p-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <MapPinIcon className="h-5 w-5 text-blue-600" />
+                  <MapPinIcon className="h-5 w-5" style={{ color: 'var(--primary)' }} />
                   <h3 className="text-xl font-semibold text-gray-900">
                     {location.city}
                   </h3>
@@ -416,7 +421,7 @@ export default function Contact() {
                   
                   <div className="flex items-center gap-2">
                     <PhoneIcon className="h-4 w-4 text-gray-400" />
-                    <a href={`tel:${location.phone}`} className="text-blue-600 hover:text-blue-700">
+                    <a href={`tel:${location.phone}`} className="hover:underline transition-colors" style={{ color: 'var(--primary)' }}>
                       {location.phone}
                     </a>
                   </div>
@@ -436,7 +441,7 @@ export default function Contact() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200">
-            <QuestionMarkCircleIcon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+            <QuestionMarkCircleIcon className="h-12 w-12 mx-auto mb-4" style={{ color: 'var(--primary)' }} />
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
               Looking for Quick Answers?
             </h2>

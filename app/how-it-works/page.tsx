@@ -122,7 +122,7 @@ export default function HowItWorks() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             How It Works
@@ -163,7 +163,7 @@ export default function HowItWorks() {
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-lg font-bold">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white" style={{ backgroundColor: 'var(--primary)' }}>
                       {step.number}
                     </div>
                     <h3 className="text-2xl font-semibold text-gray-900">
@@ -178,7 +178,7 @@ export default function HowItWorks() {
                   <ul className="space-y-2">
                     {step.details.map((detail, detailIndex) => (
                       <li key={detailIndex} className="flex items-center gap-3">
-                        <CheckCircleIcon className="h-5 w-5 text-green-600 flex-shrink-0" />
+                        <CheckCircleIcon className="h-5 w-5 flex-shrink-0" style={{ color: 'var(--success)' }} />
                         <span className="text-gray-700">{detail}</span>
                       </li>
                     ))}
@@ -186,8 +186,8 @@ export default function HowItWorks() {
                 </div>
 
                 <div className="flex-1 flex justify-center">
-                  <div className="w-64 h-64 bg-gray-100 rounded-2xl flex items-center justify-center">
-                    <step.icon className="h-24 w-24 text-blue-600" />
+                  <div className="w-64 h-64 bg-gray-50 rounded-2xl flex items-center justify-center">
+                    <step.icon className="h-24 w-24" style={{ color: 'var(--primary)' }} />
                   </div>
                 </div>
               </div>
@@ -211,8 +211,8 @@ export default function HowItWorks() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <feature.icon className="h-6 w-6" />
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(10, 31, 68, 0.1)' }}>
+                  <feature.icon className="h-6 w-6" style={{ color: 'var(--primary)' }} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {feature.title}
@@ -241,8 +241,8 @@ export default function HowItWorks() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {serviceCategories.map((category, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <category.icon className="h-8 w-8" />
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: 'rgba(10, 31, 68, 0.1)' }}>
+                  <category.icon className="h-8 w-8" style={{ color: 'var(--primary)' }} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
                   {category.title}
@@ -315,25 +315,31 @@ export default function HowItWorks() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600">
+      <section className="py-16" style={{ backgroundColor: 'var(--primary)' }}>
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl mb-8" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
             Join thousands of satisfied customers who trust us with their home service needs
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/requests/new"
-              className="bg-white text-blue-600 px-8 py-3 rounded-md text-lg font-medium hover:bg-blue-50 transition-colors"
+              className="bg-white px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-50 transition-colors"
+              style={{ color: 'var(--primary)' }}
             >
               Submit a Request
             </Link>
             <Link
               href="/services"
-              className="border-2 border-white text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-white hover:text-blue-600 transition-colors"
+              className="border-2 border-white text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-white transition-colors"
+              style={{ 
+                ':hover': { 
+                  color: 'var(--primary)' 
+                }
+              }}
             >
               Browse Services
             </Link>

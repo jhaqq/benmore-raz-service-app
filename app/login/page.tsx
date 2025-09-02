@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -38,12 +39,12 @@ export default function Login() {
       // await fetch('/api/auth/login', { method: 'POST', body: JSON.stringify(data) });
       
       // Mock authentication - in production, this would call the backend
-      if (data.email === 'demo@servicepro.com' && data.password === 'demo123') {
+      if (data.email === 'demo@domo.com' && data.password === 'demo123') {
         // Redirect to bookings or homepage
         router.push('/bookings');
       } else {
         setError('root', { 
-          message: 'Invalid email or password. Try demo@servicepro.com / demo123' 
+          message: 'Invalid email or password. Try demo@domo.com / demo123' 
         });
       }
     } catch (error) {
@@ -59,11 +60,15 @@ export default function Login() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-700 to-blue-800 rounded-md flex items-center justify-center shadow-sm">
-              <span className="text-white font-semibold text-xl">S</span>
-            </div>
-            <span className="text-2xl font-medium text-gray-900">ServicePro</span>
+          <Link href="/" className="flex items-center">
+            <Image 
+              src="/4.svg" 
+              alt="Domo Home Services" 
+              width={200}
+              height={60}
+              className="h-12 w-auto rounded-lg"
+              priority
+            />
           </Link>
         </div>
         <h2 className="mt-6 text-center text-3xl font-semibold text-gray-900">
@@ -71,7 +76,7 @@ export default function Login() {
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
-          <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500 transition-colors">
+          <Link href="/register" className="font-medium hover:underline transition-colors" style={{ color: 'var(--primary)' }}>
             create a new account
           </Link>
         </p>
@@ -81,10 +86,10 @@ export default function Login() {
         <div className="bg-white py-8 px-4 shadow-sm sm:rounded-lg sm:px-10 border border-gray-200">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             {/* Demo Credentials Notice */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-sm font-medium text-blue-900 mb-2">Demo Credentials</h3>
-              <div className="text-sm text-blue-800 space-y-1">
-                <p><strong>Email:</strong> demo@servicepro.com</p>
+            <div className="rounded-lg p-4 border" style={{ backgroundColor: 'rgba(10, 31, 68, 0.05)', borderColor: 'rgba(10, 31, 68, 0.2)' }}>
+              <h3 className="text-sm font-medium mb-2" style={{ color: 'var(--primary)' }}>Demo Credentials</h3>
+              <div className="text-sm space-y-1" style={{ color: 'var(--primary)' }}>
+                <p><strong>Email:</strong> demo@domo.com</p>
                 <p><strong>Password:</strong> demo123</p>
               </div>
             </div>
@@ -107,7 +112,8 @@ export default function Login() {
                   autoComplete="email"
                   className={`
                     appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 text-gray-900 bg-white
-                    focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm
+                    focus:outline-none focus:ring-2 sm:text-sm"
+                    style={{ '--tw-ring-color': 'var(--primary)' }}
                     ${errors.email ? 'border-red-300' : 'border-gray-300'}
                   `}
                   placeholder="Enter your email"
@@ -130,7 +136,8 @@ export default function Login() {
                   autoComplete="current-password"
                   className={`
                     appearance-none block w-full px-3 py-2 pr-10 border rounded-md shadow-sm placeholder-gray-400 text-gray-900 bg-white 
-                    focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm
+                    focus:outline-none focus:ring-2 sm:text-sm"
+                    style={{ '--tw-ring-color': 'var(--primary)' }}
                     ${errors.password ? 'border-red-300' : 'border-gray-300'}
                   `}
                   placeholder="Enter your password"
@@ -158,7 +165,8 @@ export default function Login() {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="h-4 w-4 border-gray-300 rounded"
+                  style={{ accentColor: 'var(--primary)' }}
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
                   Remember me
@@ -166,7 +174,7 @@ export default function Login() {
               </div>
 
               <div className="text-sm">
-                <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500 transition-colors">
+                <Link href="/forgot-password" className="font-medium hover:underline transition-colors" style={{ color: 'var(--primary)' }}>
                   Forgot your password?
                 </Link>
               </div>
@@ -178,7 +186,8 @@ export default function Login() {
                 disabled={!isValid || isSubmitting}
                 className={`
                   w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white
-                  transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                  transition-all focus:outline-none focus:ring-2 focus:ring-offset-2"
+                  style={{ '--tw-ring-color': 'var(--primary)' }}
                   ${isValid && !isSubmitting
                     ? 'btn-primary'
                     : 'bg-gray-300 cursor-not-allowed'

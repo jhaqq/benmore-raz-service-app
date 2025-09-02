@@ -21,7 +21,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link 
               href="services"
-              className="btn-primary text-white px-8 py-4 rounded-md font-medium text-lg flex items-center gap-2 w-full sm:w-auto justify-center"
+              className="bg-white text-gray-900 hover:bg-gray-50 px-8 py-4 rounded-md font-medium text-lg flex items-center gap-2 w-full sm:w-auto justify-center transition-colors"
               role="button"
               aria-label="Browse and book services"
             >

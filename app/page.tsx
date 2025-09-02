@@ -89,7 +89,7 @@ export default function Home() {
         {/* Services Section */}
         <section className="py-16 px-4 max-w-7xl mx-auto" id="services">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
               Our Services
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -110,7 +110,7 @@ export default function Home() {
         <section className="py-16 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
                 Why Choose ServicePro?
               </h2>
             </div>
@@ -160,7 +160,7 @@ export default function Home() {
             </p>
             <Link 
               href="#services"
-              className="btn-primary inline-block text-white px-8 py-3 rounded-md font-medium text-lg"
+              className="inline-block bg-white text-gray-900 hover:bg-gray-50 px-8 py-3 rounded-md font-medium text-lg transition-colors"
               role="button"
               aria-label="Book a service now"
             >

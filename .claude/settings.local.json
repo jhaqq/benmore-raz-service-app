@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__benmore__search_projects",
+      "mcp__benmore__get_project_assets"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

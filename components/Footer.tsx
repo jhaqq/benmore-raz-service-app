@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from "@heroicons/react/24/outline";
 
 export default function Footer() {
@@ -9,10 +10,13 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-blue-700 rounded-md flex items-center justify-center shadow-sm">
-                <span className="text-white font-semibold text-lg">S</span>
-              </div>
-              <span className="text-xl font-medium">ServicePro</span>
+              <Image 
+                src="/3.svg" 
+                alt="Domo Home Services" 
+                width={300}
+                height={80}
+                className="h-16 w-auto rounded-lg"
+              />
             </div>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
               Professional home services with transparent pricing, instant booking, 
@@ -20,23 +24,23 @@ export default function Footer() {
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-400">
-                <PhoneIcon className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <PhoneIcon className="h-5 w-5 flex-shrink-0" style={{ color: 'var(--primary-light)' }} />
                 <a href="tel:+1-555-0123" className="hover:text-white transition-colors">
                   (555) 123-0456
                 </a>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
-                <EnvelopeIcon className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <EnvelopeIcon className="h-5 w-5 flex-shrink-0" style={{ color: 'var(--primary-light)' }} />
                 <a href="mailto:support@servicepro.com" className="hover:text-white transition-colors">
                   support@servicepro.com
                 </a>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
-                <MapPinIcon className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <MapPinIcon className="h-5 w-5 flex-shrink-0" style={{ color: 'var(--primary-light)' }} />
                 <span>Serving urban areas nationwide</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
-                <ClockIcon className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <ClockIcon className="h-5 w-5 flex-shrink-0" style={{ color: 'var(--primary-light)' }} />
                 <span>Available 7 days a week, 8AM - 8PM</span>
               </div>
             </div>

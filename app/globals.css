@@ -1,24 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1f2937;
-  --primary: #1e3a8a;
-  --primary-light: #3b82f6;
-  --secondary: #4b5563;
-  --accent: #059669;
+  /* Brand Colors */
+  --primary: #0a1f44;          /* Navy - for CTAs, links, brand elements */
+  --primary-light: #1a365d;    /* Lighter navy - for hover states */
+  --primary-dark: #071426;     /* Darker navy - for pressed states */
+  
+  /* Neutral Colors */
+  --background: #ffffff;       /* Pure white - main backgrounds */
+  --background-soft: #f8f9fa;  /* Light gray - secondary backgrounds */
+  --foreground: #1a202c;       /* Dark gray - primary text */
+  --foreground-muted: #6c7a89; /* Medium gray - secondary text */
+  --border: #e2e8f0;           /* Light border color */
+  
+  /* Utility Colors */
+  --success: #059669;          /* Keep original green for success states */
+  --warning: #d97706;          /* Orange for warnings */
+  --error: #dc2626;            /* Red for errors */
 }
 
 @theme inline {
+  /* Make CSS variables available as Tailwind colors */
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
   --color-background: var(--background);
+  --color-background-soft: var(--background-soft);
   --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  
   --font-sans: var(--font-ibm-plex), system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111827;
-    --foreground: #f9fafb;
+    --background: #1a202c;
+    --background-soft: #2d3748;
+    --foreground: #f7fafc;
+    --foreground-muted: #a0aec0;
+    --border: #4a5568;
   }
 }
 
@@ -34,15 +58,15 @@ body {
 
 /* Professional button styling with gradient */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: var(--primary);
   transition: all 0.2s ease;
   color: white;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  background: var(--primary-light);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+  box-shadow: 0 4px 12px rgba(10, 31, 68, 0.3);
 }
 
 /* Professional spacing and typography */
@@ -74,7 +98,7 @@ h1, h2, h3 {
 }
 
 .progress-step.completed::after {
-  background-color: #059669;
+  background-color: var(--success);
 }
 
 .progress-step:last-child::after {

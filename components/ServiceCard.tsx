@@ -18,7 +18,7 @@ interface ServiceCardProps {
 
 const serviceIcons: Record<string, JSX.Element> = {
   cleaning: (
-    <svg className="w-12 h-12 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-12 h-12" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
             d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -26,7 +26,7 @@ const serviceIcons: Record<string, JSX.Element> = {
     </svg>
   ),
   repair: (
-    <svg className="w-12 h-12 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-12 h-12" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -34,13 +34,13 @@ const serviceIcons: Record<string, JSX.Element> = {
     </svg>
   ),
   installation: (
-    <svg className="w-12 h-12 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-12 h-12" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M13 10V3L4 14h7v7l9-11h-7z"/>
     </svg>
   ),
   maintenance: (
-    <svg className="w-12 h-12 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-12 h-12" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-.42-.243l-.228-2.284a1 1 0 00-.993-.876H9.394a1 1 0 00-.993.876l-.228 2.284a6 6 0 00-.42.243l-2.388.477a2 2 0 00-1.022.547l-.784.78a1 1 0 00-.187 1.181l1.263 2.127a1 1 0 001.075.495l2.372-.237a6 6 0 00.421.243l.228 2.284a1 1 0 00.993.876h1.566a1 1 0 00.993-.876l.228-2.284a6 6 0 00.421-.243l2.372.237a1 1 0 001.075-.495l1.263-2.127a1 1 0 00-.187-1.181l-.784-.78z"/>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -48,7 +48,7 @@ const serviceIcons: Record<string, JSX.Element> = {
     </svg>
   ),
   moving: (
-    <svg className="w-12 h-12 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-12 h-12" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M9 21v-4a2 2 0 012-2h2a2 2 0 012 2v4"/>
     </svg>
@@ -94,7 +94,13 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           <div className="flex-shrink-0">
             {getCategoryIcon(service.category)}
           </div>
-          <span className="text-xs font-medium text-gray-600 uppercase tracking-wider bg-white px-2 py-1 rounded-sm">
+          <span 
+            className="text-xs font-medium text-white uppercase tracking-wider px-2 py-1 rounded-sm" 
+            style={{ 
+              backgroundColor: '#0a1f44',
+              color: 'white'
+            }}
+          >
             {service.category}
           </span>
         </div>

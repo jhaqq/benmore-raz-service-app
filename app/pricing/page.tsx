@@ -97,7 +97,7 @@ export default function Pricing() {
       {/* Header */}
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-blue-600">Pricing</h2>
+          <h2 className="text-base font-semibold leading-7" style={{ color: 'var(--primary)' }}>Pricing</h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
             Transparent, fair pricing for all services
           </p>
@@ -109,17 +109,16 @@ export default function Pricing() {
 
       {/* Pricing tiers */}
       <div className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
-        <div className="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-3">
+        <div className="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-6xl lg:grid-cols-3">
           {pricingTiers.map((tier) => (
             <div
               key={tier.id}
-              className={`flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 relative ${
-                tier.mostPopular ? 'ring-2 ring-blue-600' : ''
-              }`}
+              className="flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 relative"
+              style={tier.mostPopular ? { borderColor: 'var(--primary)', borderWidth: '2px' } : {}}
             >
               {tier.mostPopular ? (
                 <div className="absolute top-4 right-4">
-                  <p className="rounded-full bg-blue-600/10 px-3 py-1.5 text-xs font-semibold leading-5 text-blue-600">
+                  <p className="rounded-full px-3 py-1.5 text-xs font-semibold leading-5" style={{ backgroundColor: 'rgba(10, 31, 68, 0.1)', color: 'var(--primary)' }}>
                     Most popular
                   </p>
                 </div>
@@ -128,9 +127,8 @@ export default function Pricing() {
                 <div>
                   <h3
                     id={tier.id}
-                    className={`text-xl font-semibold leading-8 ${
-                      tier.mostPopular ? 'text-blue-600' : 'text-gray-900'
-                    }`}
+                    className="text-xl font-semibold leading-8 text-gray-900"
+                    style={tier.mostPopular ? { color: 'var(--primary)' } : {}}
                   >
                     {tier.name}
                   </h3>
@@ -142,7 +140,7 @@ export default function Pricing() {
                 <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-600">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
-                      <CheckIcon className="h-6 w-5 flex-none text-blue-600" aria-hidden="true" />
+                      <CheckIcon className="h-6 w-5 flex-none" style={{ color: 'var(--primary)' }} aria-hidden="true" />
                       {feature}
                     </li>
                   ))}
@@ -153,9 +151,10 @@ export default function Pricing() {
                 aria-describedby={tier.id}
                 className={`mt-8 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
                   tier.mostPopular
-                    ? 'bg-blue-600 text-white shadow-sm hover:bg-blue-500 focus-visible:outline-blue-600'
-                    : 'text-blue-600 ring-1 ring-inset ring-blue-200 hover:ring-blue-300 focus-visible:outline-blue-600'
+                    ? 'btn-primary text-white'
+                    : 'border-2 hover:bg-gray-50 transition-colors'
                 }`}
+                style={!tier.mostPopular ? { borderColor: 'var(--primary)', color: 'var(--primary)' } : {}}
               >
                 {tier.name === 'Subscription' ? 'Contact Sales' : 'Get Started'}
               </Link>
@@ -247,19 +246,20 @@ export default function Pricing() {
       </div>
 
       {/* CTA section */}
-      <div className="bg-blue-600">
+      <div style={{ backgroundColor: 'var(--primary)' }}>
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Ready to get started?
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
               Book your first service today and experience the difference professional service makes.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/services"
-                className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="rounded-md bg-white px-6 py-3 text-sm font-semibold shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
+                style={{ color: 'var(--primary)' }}
               >
                 View Services
               </Link>
