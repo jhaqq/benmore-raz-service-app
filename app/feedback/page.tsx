@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
@@ -19,7 +19,7 @@ const feedbackSchema = z.object({
 
 type FeedbackFormData = z.infer<typeof feedbackSchema>;
 
-export default function Feedback() {
+function FeedbackForm() {
   const searchParams = useSearchParams();
   const bookingId = searchParams?.get('booking');
   const serviceName = searchParams?.get('service') || 'service';
@@ -278,5 +278,13 @@ export default function Feedback() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Feedback() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">Loading...</div>}>
+      <FeedbackForm />
+    </Suspense>
   );
 }

@@ -65,7 +65,13 @@ export default function CheckoutPage() {
     }
   };
 
-  const handleAddressSubmit = (addressData: Omit<typeof address, 'line2'> & { line2?: string }, specialNotes: string) => {
+  const handleAddressSubmit = (addressData: {
+    line1: string;
+    line2?: string;
+    city: string;
+    state: string;
+    zipCode: string;
+  }, specialNotes: string) => {
     setAddress(addressData);
     setNotes(specialNotes);
     setCurrentStep('summary');

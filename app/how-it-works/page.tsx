@@ -327,19 +327,13 @@ export default function HowItWorks() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/requests/new"
-              className="bg-white px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-50 transition-colors"
-              style={{ color: 'var(--primary)' }}
+              className="bg-white text-blue-600 px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-50 transition-colors"
             >
               Submit a Request
             </Link>
             <Link
               href="/services"
-              className="border-2 border-white text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-white transition-colors"
-              style={{ 
-                ':hover': { 
-                  color: 'var(--primary)' 
-                }
-              }}
+              className="border-2 border-white text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-white hover:text-blue-600 transition-colors"
             >
               Browse Services
             </Link>

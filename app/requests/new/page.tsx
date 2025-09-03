@@ -9,8 +9,7 @@ import {
   CheckCircleIcon,
   PhotoIcon,
   XMarkIcon,
-  ExclamationTriangleIcon,
-  InformationCircleIcon
+  ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 
 const requestSchema = z.object({
@@ -20,16 +19,13 @@ const requestSchema = z.object({
     'flooring', 'appliance_repair', 'cleaning', 'landscaping', 
     'general_handyman', 'other'
   ], {
-    errorMap: () => ({ message: 'Please select a service category' })
-  }),
+    message: 'Please select a service category'  }),
   priority: z.enum(['low', 'medium', 'high', 'urgent'], {
-    errorMap: () => ({ message: 'Please select a priority level' })
-  }),
+    message: 'Please select a priority level'  }),
   description: z.string().min(20, 'Description must be at least 20 characters'),
   preferredDate: z.string().optional(),
   preferredTime: z.enum(['morning', 'afternoon', 'evening', 'flexible'], {
-    errorMap: () => ({ message: 'Please select a preferred time' })
-  }),
+    message: 'Please select a preferred time'  }),
   address: z.string().min(5, 'Address is required'),
   city: z.string().min(2, 'City is required'),
   state: z.string().min(2, 'State is required'),
@@ -99,8 +95,6 @@ export default function NewRequest() {
     mode: 'onChange'
   });
 
-  const selectedCategory = watch('category');
-  const selectedPriority = watch('priority');
   const description = watch('description');
   const remainingChars = Math.max(0, 500 - (description?.length || 0));
 

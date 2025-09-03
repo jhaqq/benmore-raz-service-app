@@ -12,7 +12,6 @@ import {
   QuestionMarkCircleIcon,
   ArrowRightOnRectangleIcon,
   ExclamationTriangleIcon,
-  CheckCircleIcon,
   EyeIcon,
   EyeSlashIcon,
   PencilIcon

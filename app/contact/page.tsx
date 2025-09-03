@@ -19,10 +19,10 @@ const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().regex(/^\+?[\d\s\-\(\)]+$/, 'Please enter a valid phone number').optional(),
   subject: z.enum(['general', 'service_inquiry', 'technical_support', 'billing', 'complaint', 'compliment'], {
-    errorMap: () => ({ message: 'Please select a subject' })
+    message: 'Please select a subject'
   }),
   priority: z.enum(['low', 'medium', 'high'], {
-    errorMap: () => ({ message: 'Please select a priority level' })
+    message: 'Please select a priority level'
   }),
   message: z.string().min(10, 'Message must be at least 10 characters')
 });
@@ -238,8 +238,7 @@ export default function Contact() {
                   <input
                     {...register('name')}
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-white"
-                    style={{ '--tw-ring-color': 'var(--primary)' }}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
                     placeholder="Enter your full name"
                   />
                   {errors.name && (
@@ -254,8 +253,7 @@ export default function Contact() {
                   <input
                     {...register('email')}
                     type="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-white"
-                    style={{ '--tw-ring-color': 'var(--primary)' }}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
                     placeholder="your.email@example.com"
                   />
                   {errors.email && (
@@ -272,7 +270,7 @@ export default function Contact() {
                   {...register('phone')}
                   type="tel"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-white"
-                  style={{ '--tw-ring-color': 'var(--primary)' }}
+                  style={{ '--tw-ring-color': 'var(--primary)' } as React.CSSProperties}
                   placeholder="(555) 123-4567"
                 />
                 {errors.phone && (
@@ -294,7 +292,7 @@ export default function Contact() {
                         value={option.value}
                         className="sr-only peer"
                       />
-                      <div className="cursor-pointer rounded-lg border border-gray-300 p-4 hover:bg-gray-50 peer-checked:border-2 transition-all peer-checked:border-primary" style={{ '--primary': 'var(--primary)' }}>
+                      <div className="cursor-pointer rounded-lg border border-gray-300 p-4 hover:bg-gray-50 peer-checked:border-2 peer-checked:border-blue-500 transition-all">
                         <div className="font-medium text-gray-900">{option.label}</div>
                         <div className="text-sm text-gray-600 mt-1">{option.description}</div>
                       </div>
@@ -344,8 +342,7 @@ export default function Contact() {
                 <textarea
                   {...register('message')}
                   rows={6}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 resize-none text-gray-900 bg-white"
-                  style={{ '--tw-ring-color': 'var(--primary)' }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-gray-900 bg-white"
                   placeholder="Please provide details about your inquiry, question, or feedback. The more specific you can be, the better we can help you."
                 />
                 <div className="mt-1 flex justify-between text-sm">

@@ -13,7 +13,6 @@ import {
   EnvelopeIcon,
   MapPinIcon,
   CameraIcon,
-  ExclamationTriangleIcon,
   InformationCircleIcon,
   ChatBubbleLeftRightIcon
 } from '@heroicons/react/24/outline';

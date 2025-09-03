@@ -10,7 +10,7 @@ import {
   SignalIcon,
   WifiIcon
 } from '@heroicons/react/24/outline';
-import { useRealtimeUpdates, StatusUpdate } from '../hooks/useRealtimeUpdates';
+import { useRealtimeUpdates } from '../hooks/useRealtimeUpdates';
 
 interface RealtimeUpdatesProps {
   userId?: string;
