@@ -31,8 +31,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <EnvelopeIcon className="h-5 w-5 flex-shrink-0" style={{ color: 'var(--primary-light)' }} />
-                <a href="mailto:support@servicepro.com" className="hover:text-white transition-colors">
-                  support@servicepro.com
+                <a href="mailto:support@domo.com" className="hover:text-white transition-colors">
+                  support@domo.com
                 </a>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
@@ -73,7 +73,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} ServicePro. All rights reserved.
+            © {new Date().getFullYear()} Domo. All rights reserved.
           </div>
           
           <div className="flex space-x-6 text-sm">

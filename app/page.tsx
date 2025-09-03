@@ -60,7 +60,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "ServicePro",
+            "name": "Domo",
             "description": "Professional home services including cleaning, handyman, and installation services",
             "url": typeof window !== 'undefined' ? window.location.origin : '',
             "serviceType": ["House Cleaning", "Handyman Services", "Installation Services"],
@@ -111,7 +111,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--primary)' }}>
-                Why Choose ServicePro?
+                Why Choose Domo?
               </h2>
             </div>
             

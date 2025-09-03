@@ -11,12 +11,12 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ServicePro - Professional Home Services",
+  title: "Domo - Professional Home Services",
   description: "Book trusted home service professionals for cleaning, handyman work, and installations. Transparent pricing, instant booking, insured technicians.",
   keywords: ["home services", "cleaning", "handyman", "installation", "repair", "booking"],
-  authors: [{ name: "ServicePro" }],
+  authors: [{ name: "Domo" }],
   openGraph: {
-    title: "ServicePro - Professional Home Services",
+    title: "Domo - Professional Home Services",
     description: "Book trusted home service professionals with transparent pricing and instant booking.",
     type: "website",
     locale: "en_US",

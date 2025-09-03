@@ -158,7 +158,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       </div>
       
       {/* Hidden structured data for AI agents */}
-      <meta itemProp="provider" content="ServicePro" />
+      <meta itemProp="provider" content="Domo" />
       <meta itemProp="areaServed" content="Urban areas" />
       <div itemProp="offers" itemScope itemType="https://schema.org/Offer" style={{ display: 'none' }}>
         <meta itemProp="availability" content="InStock" />
