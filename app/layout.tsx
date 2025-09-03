@@ -47,7 +47,7 @@ export default function RootLayout({
     <html lang="en" className={ibmPlexSans.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#2563eb" />
+        <meta name="theme-color" content="#0a1f44" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
