@@ -197,7 +197,7 @@ export default function Bookings() {
               ].map((tab) => (
                 <button
                   key={tab.key}
-                  onClick={() => setFilter(tab.key as any)}
+                  onClick={() => setFilter(tab.key as 'all' | 'pending' | 'confirmed' | 'completed')}
                   className={`
                     whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-colors
                     ${filter === tab.key

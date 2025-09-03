@@ -47,7 +47,7 @@ export default function Login() {
           message: 'Invalid email or password. Try demo@domo.com / demo123' 
         });
       }
-    } catch (error) {
+    } catch {
       setError('root', { 
         message: 'Something went wrong. Please try again.' 
       });

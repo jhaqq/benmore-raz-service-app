@@ -535,7 +535,7 @@ const mockServices: Service[] = [
   }
 ];
 
-const serviceIcons: Record<string, JSX.Element> = {
+const serviceIcons: Record<string, React.ReactElement> = {
   cleaning: (
     <svg className="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -617,7 +617,7 @@ export default function ServiceDetail() {
     setSelectedItems(prev => {
       const newQuantity = Math.max(0, (prev[itemId] || 0) + change);
       if (newQuantity === 0) {
-        const { [itemId]: _, ...rest } = prev;
+        const { [itemId]: _removed, ...rest } = prev;
         return rest;
       }
       return { ...prev, [itemId]: newQuantity };
@@ -640,12 +640,6 @@ export default function ServiceDetail() {
     }, 0);
   };
 
-  const canProceed = () => {
-    if (isRoomBased) {
-      return selectedRoomOption !== null;
-    }
-    return Object.keys(selectedItems).length > 0;
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">

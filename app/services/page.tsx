@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { ShoppingCartIcon, PlusIcon, MinusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon, ClockIcon, MagnifyingGlassIcon, FunnelIcon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -25,16 +25,18 @@ interface ServiceItem {
   unit: string;
 }
 
+interface SelectedServiceItem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 interface CartItem {
   serviceId: number;
   serviceName: string;
   category: string;
-  items: {
-    id: number;
-    name: string;
-    price: number;
-    quantity: number;
-  }[];
+  items: SelectedServiceItem[];
   totalPrice: number;
 }
 
@@ -306,7 +308,7 @@ const mockServices: Service[] = [
   }
 ];
 
-const serviceIcons: Record<string, JSX.Element> = {
+const serviceIcons: Record<string, React.ReactElement> = {
   cleaning: (
     <svg className="w-8 h-8" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
@@ -353,7 +355,6 @@ export default function Services() {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'duration'>('name');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [initialLoad, setInitialLoad] = useState(true);
 
   // Load cart from localStorage and simulate initial loading
@@ -379,7 +380,7 @@ export default function Services() {
 
   // Filter and sort services
   const filteredServices = useMemo(() => {
-    let filtered = mockServices.filter(service => {
+    const filtered = mockServices.filter(service => {
       const matchesSearch = service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           service.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           service.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -420,7 +421,7 @@ export default function Services() {
     return `${mins}m`;
   };
 
-  const addToCart = (service: Service, selectedItems: { id: number; name: string; price: number; quantity: number }[]) => {
+  const addToCart = (service: Service, selectedItems: SelectedServiceItem[]) => {
     const totalPrice = selectedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
     const newCartItem: CartItem = {
@@ -528,7 +529,6 @@ export default function Services() {
                     onChange={(e) => setSelectedCategory(e.target.value)}
                     className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 min-w-0 text-gray-900 bg-white"
                     style={{ 
-                      focusRingColor: 'var(--primary)',
                       borderColor: selectedCategory !== 'all' ? 'var(--primary)' : undefined
                     }}
                   >
@@ -547,7 +547,6 @@ export default function Services() {
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as 'name' | 'price' | 'duration')}
                     className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 min-w-0 text-gray-900 bg-white"
-                    style={{ focusRingColor: 'var(--primary)' }}
                   >
                     <option value="name" className="text-gray-900">Name</option>
                     <option value="price" className="text-gray-900">Price (Low to High)</option>
@@ -563,7 +562,6 @@ export default function Services() {
                     onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
                     className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 min-w-0 text-gray-900 bg-white"
                     style={{ 
-                      focusRingColor: 'var(--primary)',
                       borderColor: priceRange[1] !== 1000 ? 'var(--primary)' : undefined
                     }}
                   >
@@ -586,7 +584,6 @@ export default function Services() {
                       onChange={(e) => setSelectedCategory(e.target.value)}
                       className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 text-gray-900 bg-white"
                       style={{ 
-                        focusRingColor: 'var(--primary)',
                         borderColor: selectedCategory !== 'all' ? 'var(--primary)' : undefined
                       }}
                     >
@@ -605,7 +602,6 @@ export default function Services() {
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value as 'name' | 'price' | 'duration')}
                       className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 text-gray-900 bg-white"
-                      style={{ focusRingColor: 'var(--primary)' }}
                     >
                       <option value="name" className="text-gray-900">Name</option>
                       <option value="price" className="text-gray-900">Price (Low to High)</option>
@@ -621,7 +617,6 @@ export default function Services() {
                       onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
                       className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 text-gray-900 bg-white"
                       style={{ 
-                        focusRingColor: 'var(--primary)',
                         borderColor: priceRange[1] !== 1000 ? 'var(--primary)' : undefined
                       }}
                     >
@@ -795,8 +790,8 @@ function ServiceCard({
   isInCart 
 }: {
   service: Service;
-  onAddToCart: (service: Service, selectedItems: any[]) => void;
-  getCategoryIcon: (category: string) => JSX.Element;
+  onAddToCart: (service: Service, selectedItems: SelectedServiceItem[]) => void;
+  getCategoryIcon: (category: string) => React.ReactElement;
   formatDuration: (minutes: number) => string;
   isInCart: boolean;
 }) {
@@ -810,7 +805,7 @@ function ServiceCard({
     setSelectedItems(prev => {
       const newQuantity = Math.max(0, (prev[itemId] || 0) + change);
       if (newQuantity === 0) {
-        const { [itemId]: _, ...rest } = prev;
+        const { [itemId]: _removed, ...rest } = prev;
         return rest;
       }
       return { ...prev, [itemId]: newQuantity };

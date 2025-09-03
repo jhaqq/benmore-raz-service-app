@@ -8,7 +8,6 @@ import {
   ClockIcon,
   CheckCircleIcon,
   XCircleIcon,
-  ExclamationTriangleIcon,
   MagnifyingGlassIcon,
   FunnelIcon
 } from '@heroicons/react/24/outline';

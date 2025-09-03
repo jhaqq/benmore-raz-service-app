@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Bars3Icon, XMarkIcon, UserIcon, PhoneIcon, ChevronDownIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, UserIcon, ChevronDownIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
 import RealtimeUpdates from "./RealtimeUpdates";
 
 export default function Navbar() {
@@ -28,7 +28,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 w-48">
             <Link href="/" className="inline-flex items-center">
               <Image 
-                src="/4.svg" 
+                src="/3.svg" 
                 alt="Domo Home Services" 
                 width={300}
                 height={80}
@@ -99,7 +99,7 @@ export default function Navbar() {
                     </Link>
                     <Link
                       href="/settings"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2"
+                      className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                       onClick={() => setShowUserMenu(false)}
                     >
                       <Cog6ToothIcon className="h-4 w-4" />
@@ -123,7 +123,6 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset"
-            style={{ focusRingColor: 'var(--primary)' }}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label="Toggle main menu"
@@ -165,7 +164,7 @@ export default function Navbar() {
             <div className="border-t border-gray-200 pt-4 pb-3">
               <Link
                 href="/login"
-                className="text-gray-600 hover:text-gray-900 block px-3 py-2 text-base font-medium flex items-center gap-2"
+                className="flex items-center gap-2 px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900"
                 onClick={() => setIsOpen(false)}
                 role="button"
               >

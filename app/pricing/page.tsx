@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { CheckIcon } from '@heroicons/react/20/solid';
-import { InformationCircleIcon, StarIcon } from '@heroicons/react/24/outline';
 
 const pricingTiers = [
   {
