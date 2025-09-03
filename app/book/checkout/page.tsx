@@ -181,7 +181,45 @@ export default function CheckoutPage() {
 
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
+          {/* Mobile Progress Bar */}
+          <div className="md:hidden">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              {[
+                { id: 'datetime', name: 'Date & Time', completed: ['address', 'summary'].includes(currentStep) },
+                { id: 'address', name: 'Address', completed: currentStep === 'summary' },
+                { id: 'summary', name: 'Review', completed: false }
+              ].map((step, index) => (
+                <div key={step.id} className="flex items-center">
+                  <div className={`
+                    w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium
+                    ${step.completed 
+                      ? 'bg-green-600 text-white' 
+                      : currentStep === step.id 
+                        ? 'bg-blue-600 text-white' 
+                        : 'bg-gray-300 text-gray-600'
+                    }
+                  `}>
+                    {step.completed ? '✓' : index + 1}
+                  </div>
+                  {index < 2 && (
+                    <div className={`w-8 h-0.5 mx-2 ${
+                      step.completed ? 'bg-green-600' : 'bg-gray-300'
+                    }`} />
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="text-center">
+              <span className="text-sm font-medium text-gray-700">
+                {currentStep === 'datetime' && 'Step 1: Date & Time'}
+                {currentStep === 'address' && 'Step 2: Address'}
+                {currentStep === 'summary' && 'Step 3: Review'}
+              </span>
+            </div>
+          </div>
+          
+          {/* Desktop Progress Bar */}
+          <div className="hidden md:flex items-center justify-between mb-4">
             {[
               { id: 'datetime', name: 'Date & Time', completed: ['address', 'summary'].includes(currentStep) },
               { id: 'address', name: 'Address', completed: currentStep === 'summary' },

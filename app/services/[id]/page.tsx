@@ -645,32 +645,40 @@ export default function ServiceDetail() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-4 mb-6">
-            <Link 
-              href="/services"
-              className="text-gray-500 hover:text-gray-700 p-2 -ml-2 rounded-md transition-colors"
-            >
-              <ArrowLeftIcon className="h-5 w-5" />
-            </Link>
-            <div className="flex items-center gap-4">
-              {getCategoryIcon(service.category)}
-              <div>
-                <h1 className="text-3xl font-semibold text-gray-900">{service.name}</h1>
-                <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
-                  <div className="flex items-center gap-1">
-                    <ClockIcon className="h-4 w-4" />
-                    <span>{formatDuration(service.durationMinutes)} typical</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <ShieldCheckIcon className="h-4 w-4" />
-                    <span>Insured & Vetted</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <StarIcon className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span>4.9 rating</span>
-                  </div>
-                </div>
+        <div className="max-w-4xl mx-auto px-4 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            {/* Back button and icon/title */}
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+              <Link 
+                href="/services"
+                className="text-gray-500 hover:text-gray-700 p-2 -ml-2 rounded-md transition-colors flex-shrink-0"
+              >
+                <ArrowLeftIcon className="h-5 w-5" />
+              </Link>
+              
+              <div className="hidden sm:block flex-shrink-0">
+                {getCategoryIcon(service.category)}
+              </div>
+              
+              <div className="min-w-0 flex-1">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 truncate">{service.name}</h1>
+                <p className="text-sm text-gray-600 mt-1 capitalize">{service.category} service</p>
+              </div>
+            </div>
+            
+            {/* Info badges */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-gray-600 sm:flex-shrink-0">
+              <div className="flex items-center gap-1">
+                <ClockIcon className="h-4 w-4 flex-shrink-0" />
+                <span className="whitespace-nowrap">{formatDuration(service.durationMinutes)} typical</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <ShieldCheckIcon className="h-4 w-4 flex-shrink-0" />
+                <span className="whitespace-nowrap">Insured & Vetted</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <StarIcon className="h-4 w-4 fill-yellow-400 text-yellow-400 flex-shrink-0" />
+                <span className="whitespace-nowrap">4.9 rating</span>
               </div>
             </div>
           </div>
@@ -678,18 +686,18 @@ export default function ServiceDetail() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Description */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">About This Service</h2>
               <p className="text-gray-700 leading-relaxed mb-6">{service.longDescription}</p>
               
               {/* Features */}
               <div className="mb-6">
                 <h3 className="text-lg font-medium text-gray-900 mb-3">Key Features</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {service.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <CheckCircleIcon className="h-5 w-5 text-green-600 flex-shrink-0" />
@@ -731,8 +739,8 @@ export default function ServiceDetail() {
 
           {/* Booking Panel */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 sticky top-24">
-              <div className="p-6">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 lg:sticky lg:top-24">
+              <div className="p-4 sm:p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   {isRoomBased ? 'Select Your Home Size' : 'Choose Services'}
                 </h3>
@@ -791,23 +799,23 @@ export default function ServiceDetail() {
                         </div>
                         
                         <div className="flex items-center justify-between mt-3">
-                          <span className="text-sm text-gray-600">Quantity:</span>
+                          <span className="text-sm text-gray-900">Quantity:</span>
                           <div className="flex items-center gap-3">
                             <button
                               onClick={() => handleQuantityChange(item.id, -1)}
                               disabled={!selectedItems[item.id]}
-                              className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                              className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700"
                             >
                               <MinusIcon className="h-4 w-4" />
                             </button>
                             
-                            <span className="w-8 text-center font-medium">
+                            <span className="w-8 text-center font-medium text-gray-900">
                               {selectedItems[item.id] || 0}
                             </span>
                             
                             <button
                               onClick={() => handleQuantityChange(item.id, 1)}
-                              className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                              className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors text-gray-700"
                             >
                               <PlusIcon className="h-4 w-4" />
                             </button>

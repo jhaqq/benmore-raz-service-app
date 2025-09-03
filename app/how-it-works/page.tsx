@@ -186,8 +186,8 @@ export default function HowItWorks() {
                 </div>
 
                 <div className="flex-1 flex justify-center">
-                  <div className="w-64 h-64 bg-gray-50 rounded-2xl flex items-center justify-center">
-                    <step.icon className="h-24 w-24" style={{ color: 'var(--primary)' }} />
+                  <div className="w-48 h-48 lg:w-64 lg:h-64 bg-gray-50 rounded-2xl flex items-center justify-center">
+                    <step.icon className="h-16 w-16 lg:h-24 lg:w-24" style={{ color: 'var(--primary)' }} />
                   </div>
                 </div>
               </div>

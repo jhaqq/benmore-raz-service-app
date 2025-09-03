@@ -375,7 +375,7 @@ export default function NewRequest() {
                           value={time.value}
                           className="sr-only peer"
                         />
-                        <div className="cursor-pointer rounded-md border border-gray-300 p-3 text-center text-sm font-medium hover:bg-gray-50 peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-700 transition-colors whitespace-pre-line">
+                        <div className="cursor-pointer rounded-md border border-gray-300 p-3 text-center text-sm font-medium text-gray-700 hover:bg-gray-50 peer-checked:bg-blue-50 peer-checked:border-blue-500 peer-checked:text-blue-900 transition-colors whitespace-pre-line">
                           {time.label}
                         </div>
                       </label>

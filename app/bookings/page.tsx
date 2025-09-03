@@ -188,7 +188,7 @@ export default function Bookings() {
         {/* Filter Tabs */}
         <div className="mb-6">
           <div className="border-b border-gray-200">
-            <nav className="-mb-px flex space-x-8">
+            <nav className="-mb-px flex space-x-2 sm:space-x-8 overflow-x-auto">
               {[
                 { key: 'all', label: 'All', count: bookings.length },
                 { key: 'pending', label: 'Pending', count: bookings.filter(b => b.status === 'pending').length },
@@ -199,15 +199,15 @@ export default function Bookings() {
                   key={tab.key}
                   onClick={() => setFilter(tab.key as 'all' | 'pending' | 'confirmed' | 'completed')}
                   className={`
-                    whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-colors
+                    flex-shrink-0 py-2 px-2 sm:px-1 border-b-2 font-medium text-sm transition-colors
                     ${filter === tab.key
                       ? 'border-blue-500 text-blue-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                     }
                   `}
                 >
-                  {tab.label}
-                  <span className={`ml-2 py-0.5 px-2 rounded-full text-xs ${
+                  <span className="whitespace-nowrap">{tab.label}</span>
+                  <span className={`ml-1 sm:ml-2 py-0.5 px-1.5 sm:px-2 rounded-full text-xs ${
                     filter === tab.key ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-500'
                   }`}>
                     {tab.count}
@@ -246,41 +246,41 @@ export default function Bookings() {
             filteredBookings.map((booking) => (
               <div
                 key={booking.id}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-start gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-0">
                     <div className="flex-shrink-0">
                       {getStatusIcon(booking.status)}
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-gray-900 truncate">
                         {booking.serviceName}
                       </h3>
-                      <p className="text-sm text-gray-600 capitalize mb-1">
+                      <p className="text-sm text-gray-600 capitalize mb-2">
                         {booking.serviceCategory} service
                       </p>
-                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-600">
                         <div className="flex items-center gap-1">
-                          <CalendarIcon className="h-4 w-4" />
-                          {format(new Date(booking.bookingDate), 'MMM d, yyyy')}
+                          <CalendarIcon className="h-4 w-4 flex-shrink-0" />
+                          <span className="truncate">{format(new Date(booking.bookingDate), 'MMM d, yyyy')}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <ClockIcon className="h-4 w-4" />
-                          {booking.bookingTime}
+                          <ClockIcon className="h-4 w-4 flex-shrink-0" />
+                          <span>{booking.bookingTime}</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="text-right">
+                  <div className="flex items-center justify-between sm:flex-col sm:items-end sm:text-right">
                     <div className={`
-                      inline-flex px-3 py-1 rounded-full text-xs font-medium border
+                      inline-flex px-2 sm:px-3 py-1 rounded-full text-xs font-medium border
                       ${getStatusColor(booking.status)}
                     `}>
                       {formatStatus(booking.status)}
                     </div>
-                    <div className="text-lg font-semibold text-gray-900 mt-2">
+                    <div className="text-lg font-semibold text-gray-900 sm:mt-2">
                       ${booking.totalAmount.toFixed(2)}
                     </div>
                   </div>
@@ -288,37 +288,39 @@ export default function Bookings() {
 
                 <div className="flex items-start gap-3 text-sm text-gray-600 mb-4">
                   <MapPinIcon className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <div>{booking.address.line1}</div>
-                    {booking.address.line2 && <div>{booking.address.line2}</div>}
-                    <div>{booking.address.city}, {booking.address.state} {booking.address.zipCode}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="truncate">{booking.address.line1}</div>
+                    {booking.address.line2 && <div className="truncate">{booking.address.line2}</div>}
+                    <div className="truncate">{booking.address.city}, {booking.address.state} {booking.address.zipCode}</div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-gray-100 gap-3">
                   <div className="text-sm text-gray-500">
-                    Booking ID: <span className="font-mono">{booking.id}</span>
+                    <span className="hidden sm:inline">Booking ID: </span>
+                    <span className="sm:hidden">ID: </span>
+                    <span className="font-mono text-xs sm:text-sm">{booking.id}</span>
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     {booking.status === 'confirmed' && (
-                      <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                      <button className="text-sm text-blue-600 hover:text-blue-700 font-medium px-2 py-1 hover:bg-blue-50 rounded transition-colors">
                         Reschedule
                       </button>
                     )}
                     {(booking.status === 'pending' || booking.status === 'confirmed') && (
-                      <button className="text-sm text-red-600 hover:text-red-700 font-medium">
+                      <button className="text-sm text-red-600 hover:text-red-700 font-medium px-2 py-1 hover:bg-red-50 rounded transition-colors">
                         Cancel
                       </button>
                     )}
                     {booking.status === 'completed' && (
-                      <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                      <button className="text-sm text-blue-600 hover:text-blue-700 font-medium px-2 py-1 hover:bg-blue-50 rounded transition-colors">
                         Book Again
                       </button>
                     )}
                     <Link
                       href={`/bookings/${booking.id}`}
-                      className="text-sm text-gray-600 hover:text-gray-700 font-medium"
+                      className="text-sm text-gray-600 hover:text-gray-700 font-medium px-2 py-1 hover:bg-gray-50 rounded transition-colors"
                     >
                       View Details
                     </Link>

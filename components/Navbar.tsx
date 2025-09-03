@@ -25,20 +25,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16">
           {/* Logo - Fixed width */}
-          <div className="flex-shrink-0 w-48">
+          <div className="flex items-center w-64">
             <Link href="/" className="inline-flex items-center">
               <Image 
                 src="/3.svg" 
                 alt="Domo Home Services" 
                 width={300}
                 height={80}
-                className="h-14 w-auto rounded-xl"
+                className="h-10 sm:h-12 md:h-14 w-auto rounded-xl"
                 priority
               />
             </Link>
           </div>
 
-          {/* Desktop Navigation - Centered */}
+          {/* Desktop Navigation - Truly Centered */}
           <div className="hidden md:flex flex-1 justify-center">
             <div className="flex items-center space-x-6">
               {navigation.map((item) => {
@@ -49,7 +49,7 @@ export default function Navbar() {
                     href={item.href}
                     className={`px-3 py-2 text-sm font-medium transition-colors ${
                       isActive 
-                        ? 'text-white' 
+                        ? 'text-white font-semibold' 
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                     style={{
@@ -64,8 +64,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Desktop CTA Buttons - Fixed width to match logo */}
-          <div className="hidden md:flex items-center justify-end space-x-4 w-48">
+          {/* Desktop Right Side - Fixed width to match logo */}
+          <div className="hidden md:flex items-center justify-end space-x-4 w-64">
             <RealtimeUpdates />
             
             {/* User Menu */}
@@ -119,20 +119,23 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset"
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-            aria-label="Toggle main menu"
-          >
-            {isOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
-          </button>
+          {/* Mobile menu button and notifications */}
+          <div className="md:hidden flex items-center space-x-2">
+            <RealtimeUpdates />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              aria-label="Toggle main menu"
+            >
+              {isOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 

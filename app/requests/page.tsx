@@ -207,15 +207,15 @@ export default function Requests() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-semibold text-gray-900">Service Requests</h1>
+            <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">Service Requests</h1>
             <p className="text-gray-600 mt-1">Track your service requests and their progress</p>
           </div>
           
           <Link
             href="/requests/new"
-            className="btn-primary text-white px-4 py-2 rounded-md font-medium flex items-center gap-2"
+            className="btn-primary text-white px-4 py-2 rounded-md font-medium flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <PlusIcon className="h-4 w-4" />
             New Request
@@ -223,7 +223,7 @@ export default function Requests() {
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 mb-6">
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
@@ -239,11 +239,11 @@ export default function Requests() {
 
             {/* Status Filter */}
             <div className="flex items-center gap-2">
-              <FunnelIcon className="h-5 w-5 text-gray-400" />
+              <FunnelIcon className="h-5 w-5 text-gray-400 flex-shrink-0" />
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
+                className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white w-full sm:w-auto"
               >
                 <option value="all">All Status</option>
                 <option value="submitted">Submitted</option>
@@ -258,7 +258,7 @@ export default function Requests() {
         </div>
 
         {/* Request Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
           {[
             { 
               label: 'Total Requests', 
@@ -285,9 +285,9 @@ export default function Requests() {
               bgColor: 'bg-yellow-50'
             }
           ].map((stat, index) => (
-            <div key={index} className={`${stat.bgColor} rounded-lg p-4`}>
-              <div className={`text-2xl font-semibold ${stat.color}`}>{stat.value}</div>
-              <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+            <div key={index} className={`${stat.bgColor} rounded-lg p-3 sm:p-4`}>
+              <div className={`text-xl sm:text-2xl font-semibold ${stat.color}`}>{stat.value}</div>
+              <div className="text-xs sm:text-sm text-gray-600 mt-1">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -320,49 +320,51 @@ export default function Requests() {
             filteredRequests.map((request) => (
               <div
                 key={request.id}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-start gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-0">
                     <div className="flex-shrink-0">
                       {getStatusIcon(request.status)}
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                        <h3 className="text-lg font-semibold text-gray-900 truncate">
                           {request.title}
                         </h3>
                         <span className={`
-                          inline-flex px-2 py-1 rounded-full text-xs font-medium
+                          inline-flex px-2 py-1 rounded-full text-xs font-medium w-fit
                           ${getPriorityColor(request.priority)}
                         `}>
                           {formatPriority(request.priority)}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-3">{request.description}</p>
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <p className="text-gray-600 mb-3 text-sm sm:text-base">{request.description}</p>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-sm text-gray-500">
                         <span className="capitalize">{request.category}</span>
-                        <span>•</span>
-                        <span>Submitted {format(new Date(request.submittedDate), 'MMM d, yyyy')}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="hidden sm:inline">•</span>
+                          <span>Submitted {format(new Date(request.submittedDate), 'MMM d, yyyy')}</span>
+                        </div>
                         {request.scheduledDate && (
-                          <>
-                            <span>•</span>
+                          <div className="flex items-center gap-2">
+                            <span className="hidden sm:inline">•</span>
                             <span>Scheduled {format(new Date(request.scheduledDate), 'MMM d, yyyy h:mm a')}</span>
-                          </>
+                          </div>
                         )}
                       </div>
                     </div>
                   </div>
                   
-                  <div className="text-right">
+                  <div className="flex items-center justify-between sm:flex-col sm:items-end sm:text-right">
                     <div className={`
-                      inline-flex px-3 py-1 rounded-full text-xs font-medium border
+                      inline-flex px-2 sm:px-3 py-1 rounded-full text-xs font-medium border
                       ${getStatusColor(request.status)}
                     `}>
                       {formatStatus(request.status)}
                     </div>
                     {request.estimatedCost && (
-                      <div className="text-lg font-semibold text-gray-900 mt-2">
+                      <div className="text-lg font-semibold text-gray-900 sm:mt-2">
                         ${request.finalCost || request.estimatedCost}
                         {!request.finalCost && (
                           <span className="text-sm font-normal text-gray-500"> est.</span>
@@ -391,28 +393,30 @@ export default function Requests() {
                   </div>
                 )}
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-gray-100 gap-3">
                   <div className="text-sm text-gray-500">
-                    Request ID: <span className="font-mono">{request.id}</span>
+                    <span className="hidden sm:inline">Request ID: </span>
+                    <span className="sm:hidden">ID: </span>
+                    <span className="font-mono text-xs sm:text-sm">{request.id}</span>
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     {['submitted', 'reviewed', 'assigned'].includes(request.status) && (
-                      <button className="text-sm text-red-600 hover:text-red-700 font-medium">
+                      <button className="text-sm text-red-600 hover:text-red-700 font-medium px-2 py-1 hover:bg-red-50 rounded transition-colors">
                         Cancel
                       </button>
                     )}
                     {request.status === 'completed' && (
                       <Link
                         href={`/feedback?request=${request.id}&service=${encodeURIComponent(request.title)}`}
-                        className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                        className="text-sm text-blue-600 hover:text-blue-700 font-medium px-2 py-1 hover:bg-blue-50 rounded transition-colors"
                       >
                         Leave Feedback
                       </Link>
                     )}
                     <Link
                       href={`/requests/${request.id}`}
-                      className="text-sm text-gray-600 hover:text-gray-700 font-medium"
+                      className="text-sm text-gray-600 hover:text-gray-700 font-medium px-2 py-1 hover:bg-gray-50 rounded transition-colors"
                     >
                       View Details
                     </Link>
